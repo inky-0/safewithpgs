@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PGS | Occupational Medicine Solutions</title>
+  <meta name="description" content="PGS delivers occupational medicine solutions nationwide. Pre-employment testing, 24/7 injury case management, triage, telemedicine, and MRO services across all 50 states with 1,500+ clinic partners." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy-dark: #0a0f1e;
+      --navy-mid: #121a35;
+      --navy: #1a2744;
+      --accent: #e8712a;
+      --accent-light: #f5923e;
+      --accent-glow: rgba(232,113,42,0.15);
+      --black: #080b14;
+      --surface: #0e1322;
+      --surface2: #141a2e;
+      --border: rgba(232,113,42,0.12);
+      --text: #e4e8f1;
+      --text-muted: #7a8599;
+      --white: #ffffff;
+    }
+    html { scroll-behavior: smooth; visibility: hidden; }
+    body { font-family: 'Inter', sans-serif; background: var(--black); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+
+    .service-card { transform-style: preserve-3d; will-change: transform; }
+    section { isolation: isolate; }
+
+    /* -- NAV -- */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px; height: 70px;
+      background: rgba(8,11,20,0.92); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 12px; font-size: 20px; font-weight: 800; color: var(--white); text-decoration: none; }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 14px; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover { color: var(--accent-light); }
+    .nav-cta { background: var(--accent); color: #fff !important; padding: 10px 22px; border-radius: 6px; font-weight: 600 !important; font-size: 14px !important; transition: background .2s !important; }
+    .nav-cta:hover { background: var(--accent-light) !important; color: #fff !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+    .hamburger span { width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: all .3s; }
+    .mobile-menu { display: none; position: fixed; top: 70px; left: 0; right: 0; background: var(--black); border-bottom: 1px solid var(--border); padding: 20px 24px; z-index: 99; }
+    .mobile-menu.open { display: flex; flex-direction: column; gap: 16px; }
+    .mobile-menu a { color: var(--text); text-decoration: none; font-size: 16px; font-weight: 500; }
+
+    /* -- HERO -- */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center;
+      position: relative; overflow: hidden; padding: 120px 40px 80px;
+    }
+    .hero-bg {
+      position: absolute; inset: -60px;
+      background: linear-gradient(135deg, #0a1628 0%, #121a35 40%, #1a2744 100%);
+      will-change: transform;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(232,113,42,0.08) 0%, transparent 60%);
+    }
+    .hero-content { position: relative; max-width: 720px; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(232,113,42,0.12); border: 1px solid rgba(232,113,42,0.3);
+      color: var(--accent-light); padding: 6px 16px; border-radius: 100px;
+      font-size: 13px; font-weight: 600; margin-bottom: 24px;
+      letter-spacing: .04em; text-transform: uppercase;
+    }
+    .hero-badge::before { content: ''; width: 6px; height: 6px; background: var(--accent-light); border-radius: 50%; }
+    h1 { font-size: clamp(2.4rem, 5vw, 3.6rem); font-weight: 900; line-height: 1.15; color: var(--white); margin-bottom: 20px; }
+    h1 .h1-line { display: block; overflow: hidden; }
+    h1 span { color: var(--accent); }
+    .hero-sub { font-size: 18px; color: rgba(228,232,241,0.75); margin-bottom: 36px; max-width: 600px; line-height: 1.7; }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--accent); color: #fff; padding: 14px 30px;
+      border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 15px;
+      transition: background .2s, transform .2s; display: inline-block;
+    }
+    .btn-primary:hover { background: var(--accent-light); transform: translateY(-1px); }
+    .btn-outline {
+      border: 2px solid rgba(232,113,42,0.4); color: var(--accent-light); padding: 14px 30px;
+      border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 15px;
+      transition: all .2s; display: inline-block;
+    }
+    .btn-outline:hover { background: var(--accent-glow); border-color: var(--accent-light); }
+    .hero-stats {
+      position: relative; display: flex; gap: 40px; margin-top: 56px;
+      padding-top: 36px; border-top: 1px solid var(--border);
+    }
+    .stat-num { font-size: 2rem; font-weight: 800; color: var(--white); line-height: 1; }
+    .stat-label { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
+
+    /* -- SECTION SHARED -- */
+    section { padding: 96px 40px; }
+    .container { max-width: 1160px; margin: 0 auto; }
+    .section-tag { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+    h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 800; color: var(--white); line-height: 1.2; margin-bottom: 16px; }
+    .section-sub { font-size: 16px; color: var(--text-muted); max-width: 560px; line-height: 1.7; }
+
+    /* -- SERVICES -- */
+    .services-section { background: var(--surface); }
+    .services-dual { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 52px; }
+    .service-column { background: var(--surface2); border: 1px solid var(--border); border-radius: 16px; padding: 36px; }
+    .service-column-tag { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; padding: 5px 12px; background: var(--accent-glow); border: 1px solid rgba(232,113,42,0.2); border-radius: 100px; }
+    .service-column h3 { font-size: 22px; font-weight: 800; color: var(--white); margin-bottom: 8px; }
+    .service-column .col-desc { font-size: 14px; color: var(--text-muted); line-height: 1.7; margin-bottom: 28px; }
+    .service-list { display: flex; flex-direction: column; gap: 14px; }
+    .service-list-item { display: flex; gap: 12px; align-items: flex-start; }
+    .service-list-icon {
+      width: 32px; height: 32px; min-width: 32px; border-radius: 8px;
+      background: var(--accent-glow); border: 1px solid rgba(232,113,42,0.2);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent); font-size: 14px; font-weight: 700;
+    }
+    .service-list-item h4 { font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 2px; }
+    .service-list-item p { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+
+    /* -- SERVICES GRID (additional) -- */
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 52px; }
+    .service-card {
+      background: var(--surface2); border: 1px solid var(--border);
+      border-radius: 12px; overflow: hidden; transition: transform .25s, border-color .25s;
+      padding: 28px 24px;
+    }
+    .service-card:hover { transform: translateY(-4px); border-color: rgba(232,113,42,0.35); }
+    .service-icon { font-size: 28px; margin-bottom: 14px; }
+    .service-card h3 { font-size: 17px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+    .service-card p { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+
+    /* -- COVERAGE / MAP -- */
+    .coverage-section { background: var(--black); }
+    .coverage-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; margin-top: 48px; }
+    .coverage-map { position: relative; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 48px; text-align: center; min-height: 360px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .map-big-num { font-size: 5rem; font-weight: 900; color: var(--accent); line-height: 1; }
+    .map-label { font-size: 18px; font-weight: 600; color: var(--white); margin-top: 8px; }
+    .map-sub { font-size: 14px; color: var(--text-muted); margin-top: 8px; }
+    .coverage-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 36px; }
+    .cov-stat { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; text-align: center; }
+    .cov-stat .big { font-size: 2.2rem; font-weight: 800; color: var(--accent); }
+    .cov-stat .label { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
+
+    /* -- WHY -- */
+    .why-section { background: var(--surface); }
+    .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .why-visual { border-radius: 16px; overflow: hidden; position: relative; background: linear-gradient(135deg, var(--navy-mid) 0%, var(--navy-dark) 100%); border: 1px solid var(--border); padding: 48px; min-height: 460px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+    .why-visual-icon { font-size: 64px; margin-bottom: 20px; }
+    .why-visual h3 { font-size: 24px; font-weight: 800; color: var(--white); margin-bottom: 8px; }
+    .why-visual p { font-size: 15px; color: var(--text-muted); max-width: 280px; line-height: 1.6; }
+    .why-list { display: flex; flex-direction: column; gap: 24px; margin-top: 36px; }
+    .why-item { display: flex; gap: 16px; align-items: flex-start; }
+    .why-check {
+      width: 36px; height: 36px; min-width: 36px; border-radius: 8px;
+      background: var(--accent-glow); border: 1px solid rgba(232,113,42,0.3);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent); font-size: 16px;
+    }
+    .why-item h4 { font-size: 15px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+    .why-item p { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+
+    /* -- TESTIMONIALS -- */
+    .testimonials-section { background: var(--black); }
+    .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 48px; }
+    .review-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 24px 26px;
+    }
+    .stars { color: #fbbf24; font-size: 15px; letter-spacing: 2px; margin-bottom: 12px; }
+    .review-text { font-size: 14px; color: var(--text-muted); line-height: 1.7; margin-bottom: 18px; font-style: italic; }
+    .reviewer { font-size: 13px; font-weight: 700; color: var(--white); }
+    .reviewer span { color: var(--text-muted); font-weight: 400; }
+
+    /* -- CTA BANNER -- */
+    .cta-section {
+      background: linear-gradient(135deg, var(--navy-mid) 0%, var(--navy-dark) 100%);
+      text-align: center; padding: 80px 40px; position: relative; overflow: hidden;
+    }
+    .cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(232,113,42,0.1) 0%, transparent 70%); }
+    .cta-section h2 { color: var(--white); margin-bottom: 12px; position: relative; }
+    .cta-section p { color: rgba(228,232,241,0.75); margin-bottom: 32px; font-size: 17px; position: relative; }
+
+    /* -- CONTACT -- */
+    .contact-section { background: var(--surface); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+    .contact-info { display: flex; flex-direction: column; gap: 28px; margin-top: 36px; }
+    .contact-item { display: flex; gap: 16px; align-items: flex-start; }
+    .contact-icon {
+      width: 42px; height: 42px; min-width: 42px; background: var(--accent-glow);
+      border: 1px solid rgba(232,113,42,0.25); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center; font-size: 18px;
+    }
+    .contact-item h4 { font-size: 13px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 2px; }
+    .contact-item p, .contact-item a { font-size: 15px; color: var(--white); text-decoration: none; }
+    .contact-item a:hover { color: var(--accent-light); }
+    .contact-form { background: var(--surface2); border: 1px solid var(--border); border-radius: 16px; padding: 36px; }
+    .contact-form h3 { font-size: 18px; font-weight: 700; color: var(--white); margin-bottom: 24px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+    .form-group label { font-size: 12px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: .06em; }
+    .form-group input, .form-group select, .form-group textarea {
+      background: var(--black); border: 1px solid var(--border); border-radius: 8px;
+      padding: 11px 14px; color: var(--text); font-size: 14px; font-family: inherit;
+      outline: none; transition: border-color .2s;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--accent); }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-group select option { background: var(--black); }
+    .btn-submit {
+      width: 100%; background: var(--accent); color: #fff; border: none;
+      padding: 13px; border-radius: 8px; font-size: 15px; font-weight: 700;
+      cursor: pointer; font-family: inherit; transition: background .2s;
+    }
+    .btn-submit:hover { background: var(--accent-light); }
+
+    /* -- FOOTER -- */
+    footer {
+      background: var(--black); border-top: 1px solid var(--border);
+      padding: 48px 40px 28px;
+    }
+    .footer-inner { max-width: 1160px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+    .footer-logo { font-size: 18px; font-weight: 800; color: var(--white); }
+    .footer-logo span { color: var(--accent); }
+    .footer-copy { font-size: 13px; color: var(--text-muted); }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: 13px; color: var(--text-muted); text-decoration: none; }
+    .footer-links a:hover { color: var(--accent-light); }
+
+    /* -- GHOST TEXT -- */
+    .ghost-text {
+      position: absolute; left: 50%; transform: translateX(-50%);
+      font-size: clamp(80px, 14vw, 160px); font-weight: 900;
+      color: transparent; -webkit-text-stroke: 1px rgba(232,113,42,0.07);
+      white-space: nowrap; pointer-events: none; user-select: none;
+      z-index: 0; letter-spacing: -.02em; line-height: 1;
+      top: 50%; margin-top: -0.5em;
+    }
+
+    .btn-primary, .btn-outline, .btn-submit { cursor: pointer; }
+
+    /* -- MOBILE -- */
+    @media(max-width: 900px) {
+      nav { padding: 0 18px; height: 62px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .mobile-menu {
+        top: 62px; padding: 24px 20px 28px;
+        display: none; flex-direction: column; gap: 0;
+        background: rgba(8,11,20,0.98); backdrop-filter: blur(16px);
+      }
+      .mobile-menu.open { display: flex; }
+      .mobile-menu a {
+        padding: 16px 0; border-bottom: 1px solid var(--border);
+        font-size: 17px; font-weight: 600; color: var(--text);
+        display: flex; align-items: center; justify-content: space-between;
+      }
+      .mobile-menu a:last-child {
+        border-bottom: none; color: var(--accent-light);
+        margin-top: 12px; background: rgba(232,113,42,0.08);
+        border-radius: 10px; padding: 16px 18px; border: 1px solid rgba(232,113,42,0.25);
+      }
+      .mobile-menu a::after { content: "\2192"; opacity: 0.4; font-size: 14px; }
+      .mobile-menu a:last-child::after { content: ""; }
+
+      .hero { padding: 90px 20px 52px; min-height: 100svh; }
+      .hero-badge { font-size: 11px; padding: 5px 12px; }
+      h1 { font-size: clamp(2rem, 9vw, 2.6rem); }
+      .hero-sub { font-size: 15px; margin-bottom: 28px; }
+      .hero-btns { flex-direction: column; gap: 10px; }
+      .hero-btns a { width: 100%; text-align: center; padding: 15px 20px; border-radius: 10px; }
+      .hero-stats {
+        gap: 0; flex-wrap: nowrap;
+        display: grid; grid-template-columns: repeat(3,1fr);
+        border-top: 1px solid var(--border); padding-top: 28px; margin-top: 36px;
+      }
+      .hero-stats > div { text-align: center; padding: 0 8px; border-right: 1px solid var(--border); }
+      .hero-stats > div:last-child { border-right: none; }
+      .stat-num { font-size: 1.4rem; }
+      .stat-label { font-size: 10px; }
+
+      section { padding: 56px 18px; }
+      .section-tag { font-size: 11px; }
+      h2 { font-size: clamp(1.6rem, 7vw, 2.2rem); }
+      .section-sub { font-size: 14px; }
+
+      .services-dual { grid-template-columns: 1fr; gap: 20px; }
+      .service-column { padding: 24px 20px; }
+      .services-grid { grid-template-columns: 1fr; gap: 16px; }
+
+      .coverage-grid { grid-template-columns: 1fr; gap: 32px; }
+      .coverage-map { min-height: 260px; padding: 36px; }
+      .map-big-num { font-size: 3.5rem; }
+      .coverage-stats { grid-template-columns: 1fr 1fr; gap: 12px; }
+
+      .why-grid { grid-template-columns: 1fr; gap: 32px; }
+      .why-visual { min-height: 280px; padding: 36px; }
+      .why-list { gap: 18px; margin-top: 24px; }
+      .why-check { width: 32px; height: 32px; min-width: 32px; font-size: 14px; }
+
+      .reviews-grid { grid-template-columns: 1fr; gap: 14px; }
+
+      .cta-section { padding: 60px 20px; }
+      .cta-section p { font-size: 15px; }
+      .cta-section .btn-primary { font-size: 15px; padding: 14px 28px; width: 100%; }
+
+      .contact-grid { grid-template-columns: 1fr; gap: 36px; }
+      .contact-form { padding: 24px 18px; border-radius: 14px; }
+      .form-row { grid-template-columns: 1fr; gap: 0; }
+
+      footer { padding: 36px 18px 24px; }
+      .footer-inner { flex-direction: column; align-items: center; text-align: center; gap: 16px; }
+      .footer-links { gap: 18px; flex-wrap: wrap; justify-content: center; }
+      .ghost-text { display: none; }
+    }
+
+    @media(max-width: 390px) {
+      h1 { font-size: 1.85rem; }
+      .hero { padding: 80px 16px 44px; }
+      section { padding: 48px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#home" class="nav-logo">PGS <span>|</span> Occupational Medicine</a>
+  <ul class="nav-links">
+    <li><a href="#services">Solutions</a></li>
+    <li><a href="#coverage">Coverage</a></li>
+    <li><a href="#why">Why PGS</a></li>
+    <li><a href="#reviews">Testimonials</a></li>
+    <li><a href="#contact" class="nav-cta">Get Started</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services" onclick="toggleMenu()">Solutions</a>
+  <a href="#coverage" onclick="toggleMenu()">Coverage</a>
+  <a href="#why" onclick="toggleMenu()">Why PGS</a>
+  <a href="#reviews" onclick="toggleMenu()">Testimonials</a>
+  <a href="#contact" onclick="toggleMenu()" style="color:var(--accent-light);font-weight:700;">Get Started</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content container">
+    <div class="hero-badge">Nationwide Coverage &middot; All 50 States</div>
+    <h1><div class="h1-line">Keep Your Workforce</div><div class="h1-line"><span>Healthy &amp; Compliant.</span></div></h1>
+    <p class="hero-sub">PGS delivers occupational medicine solutions tailored to your company's needs &mdash; from pre-employment testing to 24/7 injury case management. One partner, every state, every scenario.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Talk to Our Team</a>
+      <a href="#services" class="btn-outline">Explore Solutions</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">1,500+</div>
+        <div class="stat-label">Clinic Partners</div>
+      </div>
+      <div>
+        <div class="stat-num">50</div>
+        <div class="stat-label">States Covered</div>
+      </div>
+      <div>
+        <div class="stat-num">24/7</div>
+        <div class="stat-label">Injury Response</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services-section" id="services" style="position:relative;overflow:hidden;">
+  <div class="ghost-text">Solutions</div>
+  <div class="container">
+    <div class="section-tag">What We Do</div>
+    <h2>Two Sides of the Same Mission:<br>Protecting Your People</h2>
+    <p class="section-sub">Whether you're onboarding new hires or managing a workplace injury, PGS has the infrastructure, expertise, and clinic network to handle it &mdash; anywhere in the U.S.</p>
+
+    <div class="services-dual">
+      <!-- PRE-EMPLOYMENT -->
+      <div class="service-column">
+        <div class="service-column-tag">For HR Departments</div>
+        <h3>Pre-Employment Testing</h3>
+        <p class="col-desc">Growing your team? We take pre-employment medical requirements off your plate so you can focus on hiring. PGS coordinates everything through our nationwide clinic network.</p>
+        <div class="service-list">
+          <div class="service-list-item">
+            <div class="service-list-icon">&#10003;</div>
+            <div>
+              <h4>Drug Screening</h4>
+              <p>DOT and non-DOT panels, instant and lab-confirmed testing at 1,500+ locations nationwide.</p>
+            </div>
+          </div>
+          <div class="service-list-item">
+            <div class="service-list-icon">&#10003;</div>
+            <div>
+              <h4>Physical Examinations</h4>
+              <p>Pre-placement physicals, DOT physicals, and job-specific fitness-for-duty evaluations.</p>
+            </div>
+          </div>
+          <div class="service-list-item">
+            <div class="service-list-icon">&#10003;</div>
+            <div>
+              <h4>MRO Services</h4>
+              <p>Licensed Medical Review Officers ensure accurate, compliant interpretation of all test results.</p>
+            </div>
+          </div>
+          <div class="service-list-item">
+            <div class="service-list-icon">&#10003;</div>
+            <div>
+              <h4>Electronic Medical Questionnaires</h4>
+              <p>Streamlined digital intake and medical history forms that speed up onboarding and reduce paperwork.</p>
+            </div>
+          </div>
+          <div class="service-list-item">
+            <div class="service-list-icon">&#10003;</div>
+            <div>
+              <h4>Custom Testing Programs</h4>
+              <p>Every employer has different needs. We build testing programs around your specific requirements &mdash; not the other way around.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- INJURY MANAGEMENT -->
+      <div class="service-column">
+        <div class="service-column-tag">For Safety Departments</div>
+        <h3>Injury Case Management</h3>
+        <p class="col-desc">When an injury happens, time matters. PGS provides a full-service, 24/7 injury management solution that keeps your people safe and your OSHA logs clean.</p>
+        <div class="service-list">
+          <div class="service-list-item">
+            <div class="service-list-icon">&#10003;</div>
+            <div>
+              <h4>24/7 Injury Triage</h4>
+              <p>Round-the-clock nurse triage line to assess injuries in real time and direct appropriate care &mdash; day or night.</p>
+            </div>
+          </div>
+          <div class="service-list-item">
+            <div class="service-list-icon">&#10003;</div>
+            <div>
+              <h4>Telemedicine</h4>
+              <p>Immediate virtual access to occupational medicine physicians, reducing unnecessary ER visits and lost time.</p>
+            </div>
+          </div>
+          <div class="service-list-item">
+            <div class="service-list-icon">&#10003;</div>
+            <div>
+              <h4>Peer-to-Peer Consultations</h4>
+              <p>Our physicians consult directly with treating providers to ensure appropriate, work-focused treatment plans.</p>
+            </div>
+          </div>
+          <div class="service-list-item">
+            <div class="service-list-icon">&#10003;</div>
+            <div>
+              <h4>Medical Opinion Reports</h4>
+              <p>Expert medical opinions on causation, recordability, and return-to-work decisions backed by clinical evidence.</p>
+            </div>
+          </div>
+          <div class="service-list-item">
+            <div class="service-list-icon">&#10003;</div>
+            <div>
+              <h4>OSHA Recordability Guidance</h4>
+              <p>We help OSHA-sensitive employers reduce unnecessary recordables and lost-time incidents through expert medical direction.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COVERAGE -->
+<section class="coverage-section" id="coverage" style="position:relative;overflow:hidden;">
+  <div class="ghost-text">Nationwide</div>
+  <div class="container">
+    <div class="section-tag">Our Reach</div>
+    <h2>Nationwide Clinic Network.<br>Local When It Matters.</h2>
+    <p class="section-sub">No matter where your employees are, PGS has a clinic nearby. Our established network means fast, reliable service in every corner of the country.</p>
+    <div class="coverage-grid">
+      <div class="coverage-map">
+        <div class="map-big-num">1,500+</div>
+        <div class="map-label">Clinic Partners Nationwide</div>
+        <div class="map-sub">Pre-vetted and ready to serve your workforce across all 50 states</div>
+      </div>
+      <div>
+        <div class="coverage-stats">
+          <div class="cov-stat">
+            <div class="big">50</div>
+            <div class="label">States Covered</div>
+          </div>
+          <div class="cov-stat">
+            <div class="big">24/7</div>
+            <div class="label">Availability</div>
+          </div>
+          <div class="cov-stat">
+            <div class="big">100%</div>
+            <div class="label">Custom Programs</div>
+          </div>
+          <div class="cov-stat">
+            <div class="big">1</div>
+            <div class="label">Point of Contact</div>
+          </div>
+        </div>
+        <div style="margin-top:32px;">
+          <h4 style="font-size:16px;font-weight:700;color:var(--white);margin-bottom:12px;">How It Works</h4>
+          <p style="font-size:14px;color:var(--text-muted);line-height:1.7;">Your employees get sent to a clinic near them. You get one centralized point of contact and consistent reporting &mdash; whether they're in New York or New Mexico. We've already built the relationships so you don't have to.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY PGS -->
+<section class="why-section" id="why" style="position:relative;overflow:hidden;">
+  <div class="ghost-text">Why PGS</div>
+  <div class="container">
+    <div class="why-grid">
+      <div class="why-visual">
+        <div class="why-visual-icon">&#9878;</div>
+        <h3>Boutique Service.<br>National Scale.</h3>
+        <p>We're not a call center. PGS delivers custom occupational medicine solutions with the personal attention your company deserves.</p>
+      </div>
+      <div>
+        <div class="section-tag">Why Choose PGS</div>
+        <h2>Built for Employers<br>Who Need More.</h2>
+        <p class="section-sub">Most occupational medicine providers offer cookie-cutter programs. PGS builds around your specific needs &mdash; because no two companies are the same.</p>
+        <div class="why-list">
+          <div class="why-item">
+            <div class="why-check">&#10003;</div>
+            <div>
+              <h4>Tailored to Your Business</h4>
+              <p>Every program is customized to your industry, workforce size, locations, and compliance requirements. We fit your operation &mdash; not the other way around.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-check">&#10003;</div>
+            <div>
+              <h4>Reduce OSHA Recordables</h4>
+              <p>Our medical direction helps OSHA-sensitive employers cut unnecessary recordables and lost-time incidents &mdash; protecting your rates and your people.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-check">&#10003;</div>
+            <div>
+              <h4>Single Point of Contact</h4>
+              <p>One team that knows your account inside and out. No call centers, no runaround. Consistent care and reporting across every location.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-check">&#10003;</div>
+            <div>
+              <h4>Continuity Across All Sites</h4>
+              <p>Whether you have 5 locations or 500, PGS delivers the same standard of care and process everywhere your employees are.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section" id="reviews" style="position:relative;overflow:hidden;">
+  <div class="ghost-text">Trusted</div>
+  <div class="container">
+    <div class="section-tag">Client Testimonials</div>
+    <h2>Trusted by Safety &amp; HR<br>Teams Nationwide</h2>
+    <p class="section-sub">Companies across the country rely on PGS to manage their occupational medicine needs. Here's what they have to say.</p>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">"PGS completely transformed how we handle pre-employment testing. We went from juggling dozens of clinic relationships to one phone call. Our onboarding time has been cut in half."</p>
+        <div class="reviewer">HR Director <span>&middot; National Construction Firm</span></div>
+      </div>
+      <div class="review-card">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">"The 24/7 triage line has been a game-changer for our safety program. Our OSHA recordable rate dropped significantly in the first year. PGS understands what matters to safety teams."</p>
+        <div class="reviewer">Safety Manager <span>&middot; Industrial Services Company</span></div>
+      </div>
+      <div class="review-card">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">"What sets PGS apart is the personal touch. They built a program specifically for our needs and it's been seamless across all of our locations. We finally have continuity of care nationwide."</p>
+        <div class="reviewer">VP of Operations <span>&middot; Multi-State Employer</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-section">
+  <div class="container" style="position:relative;">
+    <h2>Ready to Protect Your Workforce?</h2>
+    <p>Whether you need pre-employment testing, 24/7 injury management, or both &mdash;<br>PGS builds a solution around your business.</p>
+    <a href="#contact" class="btn-primary" style="font-size:16px;padding:16px 36px;position:relative;">Schedule a Consultation</a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <div class="section-tag">Get In Touch</div>
+        <h2>Let's Build Your<br>Custom Solution.</h2>
+        <p class="section-sub">Tell us about your company and we'll show you how PGS can streamline your occupational medicine program &mdash; no obligation, no cookie-cutter pitch.</p>
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon">&#127758;</div>
+            <div>
+              <h4>Coverage</h4>
+              <p>All 50 States &middot; 1,500+ Clinics</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">&#128222;</div>
+            <div>
+              <h4>Phone</h4>
+              <a href="https://safewithpgs.com/">Visit safewithpgs.com for contact info</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">&#128337;</div>
+            <div>
+              <h4>Injury Triage</h4>
+              <p>Available 24/7/365</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3>Request a Consultation</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="Jane">
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="Smith">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Company</label>
+          <input type="text" placeholder="Your company name">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="tel" placeholder="(555) 000-0000">
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="jane@company.com">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Department</label>
+          <select>
+            <option value="">Select your department...</option>
+            <option>Human Resources</option>
+            <option>Safety / Risk Management</option>
+            <option>Operations</option>
+            <option>Executive Leadership</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>What are you looking for?</label>
+          <select>
+            <option value="">Select a service...</option>
+            <option>Pre-Employment Testing</option>
+            <option>Injury Case Management</option>
+            <option>Both / Full Program</option>
+            <option>Other / Not Sure</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Tell us about your needs</label>
+          <textarea placeholder="Number of employees, locations, current challenges, etc."></textarea>
+        </div>
+        <button class="btn-submit">Send My Request &rarr;</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">PGS <span>|</span> Occupational Medicine</div>
+    <p class="footer-copy">&copy; 2026 PGS &middot; Occupational Medicine Solutions &middot; All rights reserved</p>
+    <div class="footer-links">
+      <a href="#services">Solutions</a>
+      <a href="#coverage">Coverage</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<!-- GSAP + ScrollTrigger -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<script>
+  const isMobile = () => window.innerWidth <= 900;
+  const isTouch  = () => window.matchMedia('(hover: none)').matches;
+
+  function toggleMenu() {
+    const menu = document.getElementById('mobileMenu');
+    const ham  = document.getElementById('hamburger');
+    menu.classList.toggle('open');
+    const spans = ham.querySelectorAll('span');
+    if (menu.classList.contains('open')) {
+      gsap.to(spans[0], { rotate: 45,  y: 7,  duration: 0.25, ease: 'power2.out' });
+      gsap.to(spans[1], { opacity: 0,  x: -8, duration: 0.2  });
+      gsap.to(spans[2], { rotate: -45, y: -7, duration: 0.25, ease: 'power2.out' });
+    } else {
+      gsap.to(spans[0], { rotate: 0, y: 0, duration: 0.25, ease: 'power2.out' });
+      gsap.to(spans[1], { opacity: 1, x: 0, duration: 0.2  });
+      gsap.to(spans[2], { rotate: 0, y: 0, duration: 0.25, ease: 'power2.out' });
+    }
+  }
+
+  gsap.registerPlugin(ScrollTrigger);
+  document.documentElement.style.visibility = 'visible';
+
+  /* Hero entrance */
+  const heroTl = gsap.timeline({ delay: 0.1 });
+  heroTl
+    .from('.hero-badge',   { y: 30, opacity: 0, duration: 0.7, ease: 'power3.out' })
+    .from('h1',            { y: 40, opacity: 0, duration: 0.8, ease: 'power3.out' }, '-=0.4')
+    .from('.hero-sub',     { y: 30, opacity: 0, duration: 0.7, ease: 'power3.out' }, '-=0.5')
+    .from('.hero-btns',    { y: 24, opacity: 0, duration: 0.6, ease: 'power3.out' }, '-=0.4')
+    .from('.hero-stats > div', { y: 20, opacity: 0, stagger: 0.12, duration: 0.5, ease: 'power2.out' }, '-=0.3');
+
+  /* Section headings */
+  gsap.utils.toArray('.section-tag, h2, .section-sub').forEach(el => {
+    gsap.from(el, {
+      y: 40, opacity: 0, duration: 0.8, ease: 'power3.out',
+      scrollTrigger: { trigger: el, start: 'top 88%', once: true }
+    });
+  });
+
+  /* Service columns */
+  gsap.from('.service-column', {
+    y: 60, opacity: 0, stagger: 0.15, duration: 0.7, ease: 'power3.out',
+    scrollTrigger: { trigger: '.services-dual', start: 'top 82%', once: true }
+  });
+
+  /* Service cards */
+  gsap.from('.service-card', {
+    y: 60, opacity: 0, stagger: 0.1, duration: 0.7, ease: 'power3.out',
+    scrollTrigger: { trigger: '.services-grid', start: 'top 82%', once: true }
+  });
+
+  /* Service card 3D tilt */
+  document.querySelectorAll('.service-card, .service-column').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const rect = card.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width  - 0.5;
+      const y = (e.clientY - rect.top)  / rect.height - 0.5;
+      gsap.to(card, { rotateY: x * 6, rotateX: -y * 6, transformPerspective: 800, duration: 0.3, ease: 'power1.out' });
+    });
+    card.addEventListener('mouseleave', () => {
+      gsap.to(card, { rotateY: 0, rotateX: 0, duration: 0.5, ease: 'power2.out' });
+    });
+  });
+
+  /* Coverage */
+  gsap.from('.coverage-map', {
+    scale: 0.9, opacity: 0, duration: 0.8, ease: 'power3.out',
+    scrollTrigger: { trigger: '.coverage-grid', start: 'top 80%', once: true }
+  });
+  gsap.from('.cov-stat', {
+    y: 30, opacity: 0, stagger: 0.1, duration: 0.6, ease: 'power3.out',
+    scrollTrigger: { trigger: '.coverage-stats', start: 'top 85%', once: true }
+  });
+
+  /* Why section */
+  gsap.from('.why-visual', {
+    x: -60, opacity: 0, duration: 0.9, ease: 'power3.out',
+    scrollTrigger: { trigger: '.why-grid', start: 'top 80%', once: true }
+  });
+  gsap.from('.why-list .why-item', {
+    x: 50, opacity: 0, stagger: 0.12, duration: 0.7, ease: 'power3.out',
+    scrollTrigger: { trigger: '.why-list', start: 'top 82%', once: true }
+  });
+
+  /* Reviews */
+  gsap.from('.review-card', {
+    y: 50, opacity: 0, stagger: 0.12, duration: 0.7, ease: 'power3.out',
+    scrollTrigger: { trigger: '.reviews-grid', start: 'top 82%', once: true }
+  });
+
+  /* CTA */
+  gsap.from('.cta-section h2, .cta-section p, .cta-section .btn-primary', {
+    y: 40, opacity: 0, stagger: 0.15, duration: 0.7, ease: 'power3.out',
+    scrollTrigger: { trigger: '.cta-section', start: 'top 80%', once: true }
+  });
+
+  /* Contact */
+  gsap.from('.contact-form', {
+    y: 60, opacity: 0, duration: 0.8, ease: 'power3.out',
+    scrollTrigger: { trigger: '.contact-form', start: 'top 85%', once: true }
+  });
+  gsap.from('.contact-item', {
+    x: -40, opacity: 0, stagger: 0.1, duration: 0.6, ease: 'power3.out',
+    scrollTrigger: { trigger: '.contact-info', start: 'top 82%', once: true }
+  });
+
+  /* Ambient glow orbs */
+  const orbs = [
+    { el: '.hero', color: 'rgba(232,113,42,0.1)', x: '75%', y: '40%', size: '500px' },
+    { el: '.services-section', color: 'rgba(232,113,42,0.06)', x: '10%', y: '60%', size: '400px' },
+    { el: '.why-section', color: 'rgba(232,113,42,0.08)', x: '80%', y: '30%', size: '450px' },
+  ];
+  orbs.forEach(o => {
+    const section = document.querySelector(o.el);
+    if (!section) return;
+    const orb = document.createElement('div');
+    orb.style.cssText = `position:absolute;top:${o.y};left:${o.x};width:${o.size};height:${o.size};
+      background:radial-gradient(circle,${o.color} 0%,transparent 70%);
+      pointer-events:none;transform:translate(-50%,-50%);border-radius:50%;z-index:0;`;
+    if (getComputedStyle(section).position === 'static') section.style.position = 'relative';
+    section.appendChild(orb);
+    gsap.to(orb, { y: '-=30', duration: 4, yoyo: true, repeat: -1, ease: 'sine.inOut' });
+  });
+
+  /* Ghost text parallax */
+  gsap.utils.toArray('.ghost-text').forEach(el => {
+    gsap.to(el, {
+      xPercent: -52,
+      ease: 'none',
+      scrollTrigger: { trigger: el.parentElement, start: 'top bottom', end: 'bottom top', scrub: 1.5 }
+    });
+  });
+
+  /* h1 line reveal */
+  gsap.from('h1 .h1-line', {
+    y: '110%', opacity: 0, stagger: 0.18, duration: 0.9, ease: 'power4.out', delay: 0.4
+  });
+
+  /* Magnetic buttons */
+  if (!isTouch()) {
+    document.querySelectorAll('.btn-primary, .btn-outline, .nav-cta').forEach(btn => {
+      btn.addEventListener('mousemove', e => {
+        const rect = btn.getBoundingClientRect();
+        const x = (e.clientX - rect.left - rect.width  / 2) * 0.35;
+        const y = (e.clientY - rect.top  - rect.height / 2) * 0.35;
+        gsap.to(btn, { x, y, duration: 0.3, ease: 'power2.out' });
+      });
+      btn.addEventListener('mouseleave', () => {
+        gsap.to(btn, { x: 0, y: 0, duration: 0.6, ease: 'elastic.out(1, 0.4)' });
+      });
+    });
+  }
+
+  /* Nav shadow */
+  window.addEventListener('scroll', () => {
+    document.querySelector('nav').style.boxShadow = window.scrollY > 10 ? '0 4px 24px rgba(0,0,0,.5)' : 'none';
+  });
+</script>
+</body>
+</html>
