@@ -58,7 +58,10 @@
     }
     .hero-bg {
       position: absolute; inset: -60px;
-      background: linear-gradient(135deg, #0a1628 0%, #121a35 40%, #1a2744 100%);
+      background:
+        linear-gradient(135deg, rgba(10,22,40,0.55) 0%, rgba(18,26,53,0.45) 40%, rgba(26,39,68,0.55) 100%),
+        url('images/hero-bg.png') center/cover no-repeat,
+        linear-gradient(135deg, #0a1628 0%, #121a35 40%, #1a2744 100%);
       will-change: transform;
     }
     .hero-overlay {
@@ -849,6 +852,23 @@
   gsap.from('h1 .h1-line', {
     y: '110%', opacity: 0, stagger: 0.18, duration: 0.9, ease: 'power4.out', delay: 0.4
   });
+
+  /* ── Mouse parallax on hero background ── */
+  if (!isTouch()) {
+    const heroBg = document.querySelector('.hero-bg');
+    const heroEl = document.querySelector('.hero');
+    if (heroBg && heroEl) {
+      heroEl.addEventListener('mousemove', e => {
+        const { innerWidth: w, innerHeight: h } = window;
+        const x = (e.clientX / w - 0.5) * 50;  // -25 to +25px
+        const y = (e.clientY / h - 0.5) * 34;  // -17 to +17px
+        gsap.to(heroBg, { x, y, duration: 1.2, ease: 'power2.out' });
+      });
+      heroEl.addEventListener('mouseleave', () => {
+        gsap.to(heroBg, { x: 0, y: 0, duration: 1.5, ease: 'power2.out' });
+      });
+    }
+  }
 
   /* Magnetic buttons */
   if (!isTouch()) {
