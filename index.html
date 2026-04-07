@@ -59,10 +59,19 @@
     .hero-bg {
       position: absolute; inset: -60px;
       background:
-        url('images/hero-bg.png') center/contain no-repeat,
+        url('images/hero-bg.png') right center/auto 75% no-repeat,
         linear-gradient(135deg, #0a1628 0%, #121a35 40%, #1a2744 100%);
       will-change: transform;
-      opacity: 0.95;
+      opacity: 0.55;
+    }
+    .hero-overlay {
+      background:
+        linear-gradient(90deg, rgba(10,22,40,0.92) 0%, rgba(10,22,40,0.75) 35%, rgba(10,22,40,0.25) 70%, rgba(10,22,40,0) 100%),
+        radial-gradient(ellipse at 70% 50%, rgba(232,113,42,0.08) 0%, transparent 60%) !important;
+    }
+    @media (max-width: 768px) {
+      .hero-bg { background-position: center center; background-size: 90% auto; opacity: 0.25; }
+      .hero-overlay { background: linear-gradient(180deg, rgba(10,22,40,0.85), rgba(10,22,40,0.92)) !important; }
     }
     .hero-overlay {
       position: absolute; inset: 0;
