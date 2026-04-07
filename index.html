@@ -70,13 +70,17 @@
         radial-gradient(ellipse at 70% 50%, rgba(232,113,42,0.08) 0%, transparent 60%) !important;
     }
     @media (max-width: 768px) {
-      /* On mobile the logo competes with the headline — hide it and show a clean dark hero */
+      /* On mobile show the logo as a faint watermark behind the content */
       .hero-bg {
-        background: linear-gradient(135deg, #0a1628 0%, #121a35 40%, #1a2744 100%) !important;
-        opacity: 1;
+        background:
+          url('images/hero-bg.png') center 75%/130% auto no-repeat,
+          linear-gradient(135deg, #0a1628 0%, #121a35 40%, #1a2744 100%) !important;
+        opacity: 0.18;
       }
       .hero-overlay {
-        background: radial-gradient(ellipse at 80% 20%, rgba(232,113,42,0.10) 0%, transparent 60%) !important;
+        background:
+          linear-gradient(180deg, rgba(10,22,40,0.70) 0%, rgba(10,22,40,0.55) 50%, rgba(10,22,40,0.85) 100%),
+          radial-gradient(ellipse at 80% 20%, rgba(232,113,42,0.10) 0%, transparent 60%) !important;
       }
     }
     .hero-overlay {
