@@ -70,17 +70,19 @@
         radial-gradient(ellipse at 70% 50%, rgba(232,113,42,0.08) 0%, transparent 60%) !important;
     }
     @media (max-width: 768px) {
-      /* On mobile show the logo as a faint watermark behind the content */
+      /* Mobile: show the logo as a watermark in the upper area, above the headline.
+         Adds extra top padding so it has its own space and isn't blocked by content. */
+      .hero { padding-top: 180px !important; }
       .hero-bg {
         background:
-          url('images/hero-bg.png') center 75%/130% auto no-repeat,
+          url('images/hero-bg.png') center 60px/85% auto no-repeat,
           linear-gradient(135deg, #0a1628 0%, #121a35 40%, #1a2744 100%) !important;
-        opacity: 0.18;
+        opacity: 0.55;
       }
       .hero-overlay {
         background:
-          linear-gradient(180deg, rgba(10,22,40,0.70) 0%, rgba(10,22,40,0.55) 50%, rgba(10,22,40,0.85) 100%),
-          radial-gradient(ellipse at 80% 20%, rgba(232,113,42,0.10) 0%, transparent 60%) !important;
+          linear-gradient(180deg, rgba(10,22,40,0) 0%, rgba(10,22,40,0) 18%, rgba(10,22,40,0.85) 30%, rgba(10,22,40,0.92) 100%),
+          radial-gradient(ellipse at 80% 80%, rgba(232,113,42,0.10) 0%, transparent 60%) !important;
       }
     }
     .hero-overlay {
