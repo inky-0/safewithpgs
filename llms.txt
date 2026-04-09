@@ -6,11 +6,17 @@
 - Phone: (555) 000-0000
 - Email: operations@primeglobal.co
 - Address: PO Box 995 Port Allen, LA 70767, Port Allen, LA 70767
+- Website: https://safewithpgs-production.up.railway.app/
 
 ## Services
   - Pre-Employment Testing
   - Injury Case Management
   - Request a Consultation
 
-## Links
+## Service Area
+- Primary: Port Allen, LA
+- Also serving: greater Port Allen metropolitan area
+
+## Pages
 - [Homepage](https://safewithpgs-production.up.railway.app/)
+- [FAQ](https://safewithpgs-production.up.railway.app/faq.html)
