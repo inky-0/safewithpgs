@@ -1,19 +1,16 @@
-# PGS Occupational Medicine Solutions
+# PGS
 
-> Occupational medicine solutions for employers nationwide. 24/7 injury response, telehealth, nurse triage, and MRO services.
+> PGS delivers occupational medicine solutions nationwide. Pre-employment testing, 24/7 injury case management, triage, telemedicine, and MRO services across all 50 states with 1,500+ clinic partners.
 
 ## Contact
-- Phone: 225-408-2810
+- Phone: (555) 000-0000
 - Email: operations@primeglobal.co
 - Address: PO Box 995 Port Allen, LA 70767, Port Allen, LA 70767
 
 ## Services
-  - 24/7 Support
-  - Telehealth Virtual Consultation
-  - Peer-to-Peer Consultation
-  - Third-Party Vetting
-  - Opinion Report
-  - MRO Services
+  - Pre-Employment Testing
+  - Injury Case Management
+  - Request a Consultation
 
 ## Links
 - [Homepage](https://safewithpgs-production.up.railway.app/)
