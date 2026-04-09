@@ -4,7 +4,7 @@
 
 ## About PGS Occupational Medicine Solutions
 
-PGS Occupational Medicine Solutions is a MedicalBusiness located in Port Allen, LA. Occupational medicine solutions for employers nationwide. 24/7 injury response, telehealth, nurse triage, and MRO services.
+PGS Occupational Medicine Solutions is located in Port Allen, LA. Occupational medicine solutions for employers nationwide. 24/7 injury response, telehealth, nurse triage, and MRO services.
 
 ## Contact Information
 
@@ -41,4 +41,4 @@ PGS Occupational Medicine Solutions offers professional mro services services in
 PGS Occupational Medicine Solutions serves Port Allen, LA and surrounding communities.
 
 ---
-*This information is maintained by PGS Occupational Medicine Solutions. For the most up-to-date information, visit [our website](https://safewithpgs-production.up.railway.app/).*
+*For the most up-to-date information, visit [our website](https://safewithpgs-production.up.railway.app/).*
